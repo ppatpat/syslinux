@@ -1263,8 +1263,6 @@ struct firmware efi_fw = {
 	.vesa = &efi_vesa_ops,
 	.mem = &efi_mem_ops,
 	.boot_efi = efi_boot_efi,		
-	.image	  = NULL,
-	.table	  = NULL		
 };
 
 static inline void syslinux_register_efi(void)
