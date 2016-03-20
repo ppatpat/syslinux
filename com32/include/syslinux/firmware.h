@@ -1,3 +1,6 @@
+/*
+* Boot EFI image capabilities by Serva/Patrick Masotta (c)2015
+*/
 #ifndef _SYSLINUX_FIRMWARE_H
 #define _SYSLINUX_FIRMWARE_H
 
@@ -62,6 +65,9 @@ struct firmware {
 			  struct setup_data *, char *);
 	struct vesa_ops *vesa;
 	struct mem_ops *mem;
+	int 	(*boot_efi)(void *, size_t, char *, int);		
+	void* 	image; 
+	void**	table;		
 };
 
 extern struct firmware *firmware;
