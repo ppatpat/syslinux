@@ -9,7 +9,10 @@
  *   (at your option) any later version; incorporated herein by reference.
  *
  * ----------------------------------------------------------------------- */
-
+/*
+ * Boot EFI image capabilities by Serva/Patrick Masotta (c)2015
+ */
+ 
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
