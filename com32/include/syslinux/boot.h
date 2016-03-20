@@ -24,7 +24,9 @@
  *   OTHER DEALINGS IN THE SOFTWARE.
  *
  * ----------------------------------------------------------------------- */
-
+/*
+* Boot EFI image capabilities by Serva/Patrick Masotta (c)2015
+*/
 /*
  * syslinux/boot.h
  *
@@ -67,6 +69,7 @@ extern const struct image_types image_boot_types[];
 #define IMAGE_TYPE_COM32	7
 #define IMAGE_TYPE_CONFIG	8
 #define IMAGE_TYPE_LOCALBOOT	9
+#define IMAGE_TYPE_EFI         10
 
 uint32_t parse_image_type(const char *cmdline);
 void syslinux_run_kernel_image(const char *filename, const char *cmdline,
