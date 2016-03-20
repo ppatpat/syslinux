@@ -41,6 +41,8 @@ const struct image_types image_boot_types[] = {
     { "fdimage", IMAGE_TYPE_FDIMAGE },
     { "com32", IMAGE_TYPE_COM32 },
     { "config", IMAGE_TYPE_CONFIG },
+    { "efi", IMAGE_TYPE_EFI },
+    { "EFI", IMAGE_TYPE_EFI },
     { NULL, 0 },
 };
 
@@ -89,6 +91,13 @@ __export void execute(const char *cmdline, uint32_t type, bool sysappend)
 
 		do_sysappend(q);
 	}
+#ifdef __FIRMWARE_BIOS__
+        if(type==IMAGE_TYPE_EFI) {
+                printf("Bios core cannot load efi image %s\n",kernel);
+                return;
+        }
+#endif
+
 
 	dprintf("kernel is %s, args = %s  type = %d \n", kernel, args, type);
 
@@ -115,7 +124,10 @@ __export void execute(const char *cmdline, uint32_t type, bool sysappend)
 		}
 	}
 
-	if (type == IMAGE_TYPE_COM32) {
+        if (type == IMAGE_TYPE_EFI) {
+                new_efi_image((char *)kernel, (char *)args);
+        } else if (type == IMAGE_TYPE_COM32) {
+
 		/*
 		 * We may be called with the console in an unknown
 		 * state, so initialise it.
