@@ -66,8 +66,6 @@ struct firmware {
 	struct vesa_ops *vesa;
 	struct mem_ops *mem;
 	int 	(*boot_efi)(void *, size_t, char *, int);		
-	void* 	image; 
-	void**	table;		
 };
 
 extern struct firmware *firmware;
